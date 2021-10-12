@@ -62,7 +62,7 @@ export default class Example extends Vue {
             margin-bottom: 14px;
             background-color: tomato;
             &:last-child {
-                margin-bottom: 0px;
+                margin-bottom: 0;
             }
         }
     }

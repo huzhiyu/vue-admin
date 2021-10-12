@@ -8,9 +8,9 @@
  * @param {number} params.pageSize
  * @param {number} params.currentPage
  */
-function getData(params) {
+const getData = (params) => {
     return request("GET", "/getList", params)
-}
+};
 ```
 
 ## POST 请求
@@ -25,9 +25,9 @@ function getData(params) {
  * @param {string} params.date 日期
  * @param {number} params.sort 排序
  */
-function saveBannerInfo(params) {
+const saveBannerInfo = (params) => {
   return request("POST", "/saveBannerInfo", params)
-}
+};
 ```
 
 `POST`表单
@@ -41,11 +41,11 @@ import { jsonToFormData } from "@/utils";
  * @param {string|number} params.account 账号
  * @param {string} params.password 密码
  */
-export function saveUserInfo(params) {
+export const saveUserInfo = (params) => {
     return request("POST", "/saveUserInfo", {}, jsonToFormData(params), {
         "Content-Type": "application/x-www-form-urlencoded"
     })
-}
+};
 ```
 
 `POST`图片
@@ -62,7 +62,7 @@ export function saveUserInfo(params) {
  * uploadImg(formData).then(res => console.log(res))
  * ```
  */
-export function uploadImg(formData) {
+export const uploadImg = (formData) => {
     return request("POST", "/uploadImg", {}, formData);
-}
+};
 ```

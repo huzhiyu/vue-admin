@@ -1,15 +1,16 @@
 <template>
-    <div class="nested">
-        <transition name="fadeSlideX" mode="out-in">
-            <router-view />
-        </transition>
-    </div>
+  <div class="nested">
+    <transition mode="out-in" name="fadeSlideX">
+      <router-view/>
+    </transition>
+  </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-@Component({})
-export default class Nested extends Vue {
-    content = "nested"
-}
+  import { Component, Vue } from "vue-property-decorator";
+
+  @Component({})
+  export default class Nested extends Vue {
+    content = "nested";
+  };
 </script>
