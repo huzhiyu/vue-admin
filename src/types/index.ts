@@ -30,12 +30,12 @@ export interface AjaxParams {
     data: any,
     /** 超时毫秒 */
     overtime?: number,
-    /** 
+    /**
      * `form`表单式传参：上传图片就是使用这种传参方式；使用`formData`时将覆盖`data`
-     * @description 
-     * ### 上传图片时使用 
+     * @description
+     * ### 上传图片时使用
      * ```js
-     * const formdata = new FormData(); 
+     * const formdata = new FormData();
      * formData.append("img", file); // `img`是跟后台约定好的`key`字段
      * ```
      * ### 普通表单传参使用
@@ -50,7 +50,7 @@ export interface AjaxParams {
     success?(
         /** 响应结果 */
         res: any,
-        /** 响应原数据结果 */ 
+        /** 响应原数据结果 */
         response: XMLHttpRequest
     ): void,
     /** 失败回调 */
@@ -132,25 +132,28 @@ export interface RouteMeta {
 }
 
 /** 自定义的路由类型-继承`RouteConfig` */
-export interface RouteItem extends RouteConfig {
+export interface RouteItem {
     /**
      * 路由名，类似唯一`key`
      */
+    path: string
     name?: string
     /** 外链地址，优先级会比`path`高 */
     link?: string
     /**
      * 可以访问该权限的用户类型数组，与`userInfo.type`对应；
      * 传空数组或者不写该字段代表可以全部用户访问
-     * 
+     *
      * | number | 用户类型 |
      * | --- | --- |
      * | 0 | 超级管理员 |
      * | 1 | 普通用户 |
      */
     auth?: Array<number>
+    component: Object
     /** 标头 */
     meta: RouteMeta
     /** 子级路由 */
+    redirect?: string
     children?: Array<RouteItem>
 }

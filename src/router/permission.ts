@@ -13,7 +13,7 @@ const routerTo = {
 
 /**
  * 路由实例
- * @description 
+ * @description
  * 这里不使用 `import router from "./index.ts"`的原因是因为如果该文件在
  * `src/layout/components/Navbar.vue`文件中导入某个方法的时候，会导致循环引用而产生的`router = undefined`;
  * 原因是文件引用的先后顺序问题，如果有比当前文件过早引用的情况下就会出现这类情况，为了兼容所以使用这种动态变量设置方式
@@ -22,7 +22,7 @@ let router: VueRouter;
 
 /**
  * 处理权限路由列表
- * @param routes 
+ * @param routes
  */
 function handleAuth(routes: Array<RouteItem>) {
     const list: Array<RouteItem> = [];
@@ -63,7 +63,7 @@ export function initPermission(vueRouter: VueRouter, baseRoutes: Array<RouteItem
                 // 不重定向到`/404`
                 router.addRoutes([{...baseRoutes[1], name: "page404", path: "*"}]);
                 store.layout.completeRouters = baseRoutes.concat(store.layout.addRouters);
-                next({ ...to, replace: true });
+                next({ path: to.path });
             }
         } else {
             if (to.path === "/login") {
@@ -75,13 +75,13 @@ export function initPermission(vueRouter: VueRouter, baseRoutes: Array<RouteItem
                 NProgress.done();
             }
         }
-        
+
     });
 
     router.afterEach(to => {
         NProgress.done();
         // 根据路由名动态设置文档的标题
-        if (to.meta.title) {
+        if (to.meta?.title) {
             document.title = to.meta.title as string;
         }
     })
@@ -89,7 +89,7 @@ export function initPermission(vueRouter: VueRouter, baseRoutes: Array<RouteItem
 }
 
 /**
- * 跳转路由初始化页面 
+ * 跳转路由初始化页面
  * @description 登录成功之后用
 */
 export function openNextPage() {

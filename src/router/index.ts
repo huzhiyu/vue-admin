@@ -39,7 +39,7 @@ export const add: Array<RouteItem> = [
         name: "index",
         redirect: "/home",
         component: Layout,
-        meta: { title: "首页", icon: "home" }, 
+        meta: { title: "首页", icon: "home" },
         children: [
             {
                 path: "/home",
@@ -114,13 +114,6 @@ export const add: Array<RouteItem> = [
                         component: () => import("../views/example/column-1.vue")
                     }
                 ]
-            },
-            {
-                path: "/link-baidu",
-                name: "link-baidu",
-                link: "https://www.baidu.com",
-                component: Page404, // 这里必需给一个组件
-                meta: { title: "百度一下", icon: "baidu" },
             },
             {
                 path: "/menu-4",
